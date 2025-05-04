@@ -10,8 +10,9 @@ body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     padding: 1rem;
+    overflow-x: hidden;
 }
 
 #oyun-konteyner {
@@ -21,11 +22,14 @@ body {
     border-radius: 20px;
     padding: 1.5rem;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .ekran {
     display: none;
     text-align: center;
+    position: relative;
 }
 
 .ekran.aktif {
@@ -297,5 +301,32 @@ input {
     
     .kontrol-butonu {
         width: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        align-items: flex-start;
+        padding: 0.5rem;
+    }
+    
+    #oyun-konteyner {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        padding: 1rem;
+    }
+    
+    .atasozu-konteyner {
+        margin: 1rem 0;
+        padding: 0 0.5rem;
+    }
+    
+    .giris-konteyner {
+        margin: 1rem 0;
+        padding: 0 0.5rem;
+    }
+    
+    input {
+        font-size: 16px;
     }
 } 

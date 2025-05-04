@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Atasözü Bulmaca</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -20,7 +20,7 @@
                         <option value="zor">Zor</option>
                     </select>
                 </div>
-                <button id="krediler" class="menu-buton">Hakkında</button>
+                <button id="krediler" class="menu-buton">Krediler</button>
             </div>
         </div>
 
@@ -37,18 +37,18 @@
                 <div id="kolay-giris" class="giris-grubu">
                     <div class="zor-giris-satir">
                         <label for="cevap-giris">Eksik Kelime:</label>
-                        <input type="text" id="cevap-giris" placeholder="Eksik kelimeyi yazın">
+                        <input type="text" id="cevap-giris" placeholder="Eksik kelimeyi yazın" autocomplete="off">
                     </div>
                     <button id="cevabi-kontrol-et" class="kontrol-butonu">Kontrol Et</button>
                 </div>
                 <div id="zor-giris" class="giris-grubu">
                     <div class="zor-giris-satir">
                         <label for="cevap-giris-1">1. Eksik Kelime:</label>
-                        <input type="text" id="cevap-giris-1" placeholder="İlk eksik kelimeyi yazın">
+                        <input type="text" id="cevap-giris-1" placeholder="İlk eksik kelimeyi yazın" autocomplete="off">
                     </div>
                     <div class="zor-giris-satir">
                         <label for="cevap-giris-2">2. Eksik Kelime:</label>
-                        <input type="text" id="cevap-giris-2" placeholder="İkinci eksik kelimeyi yazın">
+                        <input type="text" id="cevap-giris-2" placeholder="İkinci eksik kelimeyi yazın" autocomplete="off">
                     </div>
                     <button id="cevabi-kontrol-et-zor" class="kontrol-butonu">Kontrol Et</button>
                 </div>
@@ -66,8 +66,7 @@
         <!-- Oyunu Yapan Kişi -->
         <div id="krediler-ekrani" class="ekran">
             <h2>Oyunu Geliştiren</h2>
-            <p>Bu oyun Murat Cemil Sara tarafından geliştirilmiştir.</p>
-            <br />
+            <p>Bu oyun Murat Cemil Sara tarafından yapılmıştır!</p>
             <button id="kredileri-kapat" class="menu-buton">Kapat</button>
         </div>
     </div>
