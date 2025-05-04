@@ -245,13 +245,13 @@ zorlukSecici.addEventListener("change", () => {
     localStorage.setItem("zorlukSeviyesi", zorlukSecici.value);
 });
 
-// Ekranlari degistirme fonksiyonu
+// Ekranlari değiştirme fonksiyonu
 function ekranGoster(ekran) {
     document.querySelectorAll(".ekran").forEach(s => s.classList.remove("aktif"));
     ekran.classList.add("aktif");
 }
 
-// Rastgele atasozu secme
+// Rastgele atasözü secme
 function rastgeleAtasozuSec() {
     if (kullanilanAtasozleri.length === atasozleri.length) {
         kullanilanAtasozleri = [];
@@ -264,7 +264,7 @@ function rastgeleAtasozuSec() {
     return atasozu;
 }
 
-// Kelime gizleme
+// Kelime gizleme . En az 4 harfli kelimeler gizlenir.
 function kelimeGizle(atasozu, zorluk) {
     const kelimeler = atasozu.split(" ");
     const uzunKelimeler = kelimeler.filter(kelime => kelime.length > 3);
@@ -279,11 +279,11 @@ function kelimeGizle(atasozu, zorluk) {
     gizliKelimeler = "";
     
     if (zorluk === "zor" && uzunKelimeler.length >= 2) {
-        // Iki farkli kelime sec
+        // İki farklı kelime seç
         const ilkIndex = Math.floor(Math.random() * uzunKelimeler.length);
         const ilkKelime = uzunKelimeler[ilkIndex];
         
-        // Ikinci kelimeyi sec (ilk kelimeden farkli olmali)
+        // İkinci kelimeyi seç (ilk kelimeden farkli olmali)
         let ikinciIndex;
         do {
             ikinciIndex = Math.floor(Math.random() * uzunKelimeler.length);
@@ -291,7 +291,7 @@ function kelimeGizle(atasozu, zorluk) {
         
         const ikinciKelime = uzunKelimeler[ikinciIndex];
         
-        // Kelimeleri cumledeki sirasina gore duzenle
+        // Kelimeleri cümledeki sirasina gore düzenle
         const ilkKelimeSirasi = kelimeler.indexOf(ilkKelime);
         const ikinciKelimeSirasi = kelimeler.indexOf(ikinciKelime);
         
@@ -301,7 +301,7 @@ function kelimeGizle(atasozu, zorluk) {
             gizliKelimeler = ikinciKelime + "," + ilkKelime;
         }
         
-        // Her kelimeyi ayri span icine al
+        // Gizli kelimeleri ayır
         const gizliIlkKelime = `<span class="gizli-kelime">${"_ ".repeat(ilkKelime.length).trim()}</span>`;
         const gizliIkinciKelime = `<span class="gizli-kelime">${"_ ".repeat(ikinciKelime.length).trim()}</span>`;
         
@@ -324,7 +324,7 @@ function kelimeGizle(atasozu, zorluk) {
     return sonuc;
 }
 
-// Oyunu baslatma
+// Oyunu başlatma
 function oyunuBaslat() {
     const zorluk = zorlukSecici.value;
     kalanSure = zorluk === "zor" ? 30 : 15;
@@ -333,7 +333,7 @@ function oyunuBaslat() {
     oyunAktif = true;
     ekranGoster(oyunEkrani);
     
-    // Input gruplarını ayarla
+    // Zorluk seviyesine göre oyunu başlat
     kolayInputGrubu.classList.remove("aktif");
     zorInputGrubu.classList.remove("aktif");
     if (zorluk === "zor") {
@@ -367,7 +367,7 @@ function sonrakiSoru() {
     sureGosterge.textContent = kalanSure;
 }
 
-// Zamani guncelleme
+// Süreyi sıfırla
 function sureyiGuncelle() {
     if (!oyunAktif) return;
     
@@ -381,7 +381,7 @@ function sureyiGuncelle() {
     }
 }
 
-// Cevap kontrolu
+// Cevabı kontrol et    
 function cevabiKontrolEt() {
     if (!oyunAktif) return;
     
@@ -406,8 +406,6 @@ function cevabiKontrolEt() {
                       cevap2 === gizliKelimelerListesi[0].toLowerCase());
         }
         
-        console.log("Girilen cevaplar:", cevap1, cevap2);
-        console.log("Beklenen cevaplar:", gizliKelimelerListesi[0].toLowerCase(), gizliKelimelerListesi[1].toLowerCase());
     } else {
         const cevap = kolayCevapInput.value.trim().toLowerCase();
         dogruMu = cevap === gizliKelimeler.toLowerCase();
@@ -416,7 +414,8 @@ function cevabiKontrolEt() {
     if (dogruMu) {
         geriBildirim.textContent = "Doğru!";
         geriBildirim.className = "geri-bildirim dogru";
-        puan += kalanSure * (zorluk === "zor" ? 1.2 : 1);
+        let mevcutSure = parseInt(sureGosterge.textContent);
+        puan += mevcutSure;
         toplamPuanGosterge.textContent = Math.round(puan);
         oyunAktif = false;
         
